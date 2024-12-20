@@ -6,7 +6,7 @@ import { generateToken, verifyToken } from '@/utils';
 
 export const signup: RequestHandler = async (req, res, next) => {
     try {
-        const { name, email, password, phone, birthday, address } = req.body;
+        const { name, email, password, phone, birthday, address, role } = req.body;
 
         const checkEmail = await UsersModel.findOne({ email });
         if (checkEmail) {
@@ -19,7 +19,8 @@ export const signup: RequestHandler = async (req, res, next) => {
             phone,
             birthday,
             address,
-            password: await bcrypt.hash(password, 6)
+            password: await bcrypt.hash(password, 6),
+            role,
         });
         const { password: _, ...result } = _result.toObject();
 
