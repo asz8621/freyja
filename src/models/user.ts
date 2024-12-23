@@ -67,6 +67,14 @@ const userSchema = new Schema<IUser>(
             detail: {
                 type: String,
                 required: [true, 'detail 未填寫']
+            },
+            county: {
+                type: String,
+                required: [true, 'county 未填寫']
+            },
+            city: {
+                type: String,
+                required: [true, 'city 未填寫']
             }
         },
         verificationToken: {
@@ -88,12 +96,12 @@ const userSchema = new Schema<IUser>(
     }
 );
 
-userSchema.virtual('address.county').get(function () {
-    return ZipCodeMap.find(value => value.zipcode === this.address.zipcode)?.county;
-});
+// userSchema.virtual('address.county').get(function () {
+//     return ZipCodeMap.find(value => value.zipcode === this.address.zipcode)?.county;
+// });
 
-userSchema.virtual('address.city').get(function () {
-    return ZipCodeMap.find(value => value.zipcode === this.address.zipcode)?.city;
-});
+// userSchema.virtual('address.city').get(function () {
+//     return ZipCodeMap.find(value => value.zipcode === this.address.zipcode)?.city;
+// });
 
 export default model('user', userSchema);

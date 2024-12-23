@@ -15,6 +15,8 @@ export interface IOrder extends Document {
         address: {
             zipcode: number;
             detail: string;
+            city: string;
+            county: string;
         };
     };
     status: number;
@@ -89,6 +91,14 @@ const orderSchema = new Schema<IOrder>(
                 detail: {
                     type: String,
                     required: [true, 'detail 未填寫']
+                },
+                county: {
+                    type: String,
+                    required: [true, 'county 未填寫']
+                },
+                city: {
+                    type: String,
+                    required: [true, 'city 未填寫']
                 }
             }
         },
