@@ -1,6 +1,6 @@
 import { Schema, model, type Document } from 'mongoose';
 import validator from 'validator';
-import ZipCodeMap, { zipCodeList } from '@/utils/zipcodes';
+// import ZipCodeMap, { zipCodeList } from '@/utils/zipcodes';
 
 export interface IUser extends Document {
     name: string;
